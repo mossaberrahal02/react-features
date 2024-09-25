@@ -134,3 +134,36 @@ header.innerHTML = 'Hello Word';
 myDocument.body.appendChild(header)
 
 ```
+
+# Best practices
+it represents the structure of a document as a tree of objects on of the best pratices is to wait for the DOM content to load and it's done by wrapping it in a *event listner*
+```DOMContentLoaded```
+```
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Manipulation Example</title>
+</head>
+<body>
+    <h1 id="header">Hello World!</h1>
+    <button id="changeTextButton">Change Text</button>
+
+    <script>
+        // Wait for the DOM to be fully loaded
+        **document.addEventListener('DOMContentLoaded'**, function() {
+            const header = document.getElementById('header');
+            const button = document.getElementById('changeTextButton');
+
+            // Change header text when button is clicked
+            button.addEventListener('click', function() {
+                header.textContent = "Hello DOM Manipulation!";
+                header.style.color = "blue"; // Change text color
+            });
+        });
+    </script>
+</body>
+</html>
+```
+- Avoid global variables
