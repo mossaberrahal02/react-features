@@ -236,4 +236,4 @@ const element = {
 }
 ```
 
-and this what an element is, ** an object with two properties *type* *props* ** (well, it has more, but we only care about these two).
+and this what an element is, **an object with two properties *type* *props*** (well, it has more, but we only care about these two).
