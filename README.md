@@ -1,6 +1,6 @@
-## react-features
+# react-features
 
-# Set Up The Environment
+## Set Up The Environment
 
 ```npx create-react-app name-of-the-react-app```
 ```npx``` is command that comes with node js, it allows us to run npm packages(Node.js packages) without installing them globally (it's js package executer used to execute the js packages directly without installing them).
