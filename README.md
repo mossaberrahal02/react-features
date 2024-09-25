@@ -206,3 +206,34 @@ ReactDOM.render(<Counter />, document.getElementById('root'));
 2. State Change: When the button is clicked, setCount updates the state, causing React to re-render that component in the Virtual DOM.
 3. Diffing Process: React compares this new Virtual DOM with the previous version to identify what has changed (in this case, just the count).
 4. Real DOM Update: Only the < h1> element displaying the count will be updated in the real DOM rather than re-rendering everything.
+
+## How React, JSX and DOM works ?
+
+```
+const element = <h1 title="foo">Hello</h1> // defines a React element
+const container = document.getElementById("root") // gets a node from the DOM.
+ReactDOM.render(element, container) // renders the React element into the container
+```
+
+the first line is defined with JSX so lets convert it to vanilla js (pure js no additionnals)
+JSX is transformed to js by Babel or another tool or compilers, it replaces the tags with a call to createElement(tag) passing the tag name, the props and children as parametters
+
+```
+const element = <h1 title="foo">Hello</h1>
+==>
+const element = React.createElement(
+  "h1",
+  { title: "foo" },
+  "Hello"
+)
+or
+const element = {
+  type: "h1",
+  props: {
+    title: "foo",
+    children: "Hello",
+  },
+}
+```
+
+and this what an element is, ** an object with two properties *type* *props* ** (well, it has more, but we only care about these two).
