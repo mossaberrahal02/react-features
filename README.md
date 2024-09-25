@@ -205,4 +205,4 @@ ReactDOM.render(<Counter />, document.getElementById('root'));
 1. Initial Render: When ReactDOM.render is called, React creates an initial Virtual DOM representation of the Counter component.
 2. State Change: When the button is clicked, setCount updates the state, causing React to re-render that component in the Virtual DOM.
 3. Diffing Process: React compares this new Virtual DOM with the previous version to identify what has changed (in this case, just the count).
-4. Real DOM Update: Only the <'h1'> element displaying the count will be updated in the real DOM rather than re-rendering everything.
+4. Real DOM Update: Only the < h1> element displaying the count will be updated in the real DOM rather than re-rendering everything.
