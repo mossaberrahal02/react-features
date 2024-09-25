@@ -48,6 +48,89 @@ which it is a package manager used to install, delete and update js packages on 
 ## Build my own React
 
 int Java script the word **Document** is an object represents the entire HTML document that is currently loaded in the browser.
-it's part of the Document Object Model DOM which provides a structured representation as a tree of *objects*
+it's part of the Document Object Model DOM which provides a structured representation as a tree of *objects* 
+as conclusion the **Document** object is the root node of the DOM tree.
 
+- document.getElementById(id): Retrieves an element by its ID.
+- document.getElementsByClassName(name): Retrieves elements by their class name.
+- document.querySelector(selector): Retrieves the first element that matches a specified CSS selector.
+- document.URL: Returns the URL of the document.
+- document.title: Gets or sets the title of the document.
+- document.body: Returns the <body> element of the document.
+- document.head: Returns the <head> element of the document.
 
+what really happens when we do this document.get... and assign it to a variable like let *test*, test will contain a refrence to that element if it exists else *null*
+
+*getElementById* *getElementsByClassName* *querySelector* these methods are part of the object document once we call them they do their jobs.
+
+*URL* *title* *body* *head* and thes are properties of the object document, once the object is created they have a default values and we can change them in case we need that.
+
+in JavaScript the Document object is part of the browser's DOM and is not created by the developers, it's automatically instantiated by the browser once the the HTML document is loaded.
+here an exemple that can demonstrate how all this works
+i'll create a **Document** class and from it we gonna instanciate an object like the document object
+for example :
+```
+Class Element
+{
+    constructor(tagName)
+    {
+        this.tagName = tagName;
+        this.children = [];
+        this.innerHtml = '';
+    }
+    appendChild(child)
+    {
+        this.children.push(child);
+    }
+
+    toString()
+    {
+        return (
+            '
+                <${this.tagName}>
+                    ${this.innerHtml}
+                    ${this....}
+                </${this.tagName}>
+            ';
+        )
+    }
+}
+
+Class Document
+{
+    constructor()
+    {
+        this.title = 'untitled document';
+        this.body = new Element('body');
+        this.head = new Element('head');
+        this.url = 'https://exemple.com';
+    }
+    setTitle(newTitle)
+    {
+        this.title = newTitle;
+    }
+    getTitle()
+    {
+        return (this.title);
+    }
+    createElement(tagName)
+    {
+        return (new Element(tagName));
+    }
+    getElementById(id)
+    {
+        // for simplicity, i will not implement a full search
+        return(
+            this.body.children.find(child => child.id === id || null);
+        )
+    }
+}
+
+const myDocument = new Document();
+myDocument.setTitle('my document');
+
+const header = myDocument.createElement('h1);
+header.innerHTML = 'Hello Word';
+myDocument.body.appendChild(header)
+
+```
