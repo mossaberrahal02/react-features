@@ -29,4 +29,25 @@ now the app will be created locally and we can start it using
 ```
 npm start
 ```
-which it is a package manager used to install, delete and update js packages on the machine
+which it is a package manager used to install, delete and update js packages on the machine.
+
+## exploring the project structure
+
+```src/index.js```: this is the entry point of the React application, it imports the root component and renders it to the DOM
+```src/App.js```: this file contains the root component of the application, we can start building the UI in this component or create another components and use them here
+```src/components/``` : this folder is where we can store the reusable components
+```public/index.html```: this file is the base HTML template for the react app, the entry point of the app (src/index.js) will be included here
+
+## Some basics
+- State: the use of React state to handle and update data in the app
+- Routing: seting up a routing in the app using React router to create a route-based navigation.
+- API Calls: Connect to a backend API and make HTTP calls using libraries like Axios or Fetch
+- Styling: Add styles to the components using CSS, Sass or inline styling libraries like styled-components.
+
+<!-- ## Start with functional Components -->
+## Build my own React
+
+int Java script the word **Document** is an object represents the entire HTML document that is currently loaded in the browser.
+it's part of the Document Object Model DOM which provides a structured representation as a tree of *objects*
+
+
