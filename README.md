@@ -4,7 +4,7 @@
 
 ```npx create-react-app name-of-the-react-app```
 ```npx``` is command that comes with node js, it allows us to run npm packages(Node.js packages) without installing them globally (it's js package executer used to execute the js packages directly without installing them).
-in this case it is used to rub the create-react-app package
+in this case it is used to run the create-react-app package
 ```create-react-app``` tool developped by the react team to help us quickly set up new React project, it automatically configures the react project with everything we need.
 it set up :
 1. Webpack
@@ -65,7 +65,7 @@ what really happens when we do this document.get... and assign it to a variable 
 
 *URL* *title* *body* *head* and thes are properties of the object document, once the object is created they have a default values and we can change them in case we need that.
 
-in JavaScript the Document object is part of the browser's DOM and is not created by the developers, it's automatically instantiated by the browser once the the HTML document is loaded.
+in JavaScript the Document object is part of the browser's DOM and is not created by the developers, it's automatically instantiated by the browser once the HTML document is loaded.
 here an exemple that can demonstrate how all this works
 i'll create a **Document** class and from it we gonna instanciate an object like the document object
 for example :
@@ -129,14 +129,14 @@ Class Document
 const myDocument = new Document();
 myDocument.setTitle('my document');
 
-const header = myDocument.createElement('h1);
+const header = myDocument.createElement('h1');
 header.innerHTML = 'Hello Word';
 myDocument.body.appendChild(header)
 
 ```
 
 # Best practices
-it represents the structure of a document as a tree of objects on of the best pratices is to wait for the DOM content to load and it's done by wrapping it in a *event listner*
+it represents the structure of a document as a tree of objects one of the best pratices is to wait for the DOM content to load and it's done by wrapping it in a *event listner*
 ```DOMContentLoaded```
 ```
 <!DOCTYPE html>
@@ -172,7 +172,7 @@ it represents the structure of a document as a tree of objects on of the best pr
 
 - performance:
 DOM can be slow and inefficien, especially for complex web applications and frequent **updates**.
-VDOM allowes for optimized updates by comparing the previous and the current state and applying only the necessery changes the the real DOM
+VDOM allowes for optimized updates by comparing the previous and the current state and applying only the necessery changes in the real DOM
 
 - Update process:
 DOM when a change accures on the DOM, the entire tree is updated wich can be slow.
@@ -220,13 +220,13 @@ JSX is transformed to js by Babel or another tool or compilers, it replaces the 
 
 ```
 const element = <h1 title="foo">Hello</h1>
-==>
+==> transform it to valid JS
 const element = React.createElement(
   "h1",
   { title: "foo" },
   "Hello"
 )
-or
+==> transform it to a vanilla JS (pure JS no additions)
 const element = {
   type: "h1",
   props: {
@@ -237,3 +237,36 @@ const element = {
 ```
 
 and this what an element is, **an object with two properties *type* and *props*** (well, it has more, but we only care about these two).
+- type: is a string thath specifies the tagName (type of DOM Node) which we pass to document.createElement
+- props: is another object has all key values from the JSX attributes
+---> props has a special propertie called **children** in this case its a string contains the content of the h1 element but usually it's an array with more elements **that's why elements are also trees**
+
+ReactDOM.render(element, container)
+
+lets convert this line of code
+ReactDom is a package and render is a method where react changes the DOM.
+
+we create a node using element.type
+const node = document.createElement(element.type);
+
+we assign all the elements in props  
+node["title"] = element.props.title
+then we create the nodes for the childrenwe only have a string as a child so we create a text node
+const text = document.createTextNode("");
+text["nodeValue"] = element.props.children
+
+finally we append the testNode to the h1 and the h1 to the container
+
+
+node.appendChild(text)
+container.appendChild(node)
+
+
+
+## Step I the createElement Function
+
+Let's start again with another app. This time we'll replace React code with our own version of React.
+
+We'll start by writing our own createElement.
+Let's transform the JSX to JS so we can see the createElement calls.
+
